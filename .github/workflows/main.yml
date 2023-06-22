@@ -24,7 +24,7 @@ jobs:
           pytest -m tcid011 -s
 
       - name: Send mail
-        if: ${{ always() }}
+        if: ${{ failure() }}
         uses: dawidd6/action-send-mail@v2
         with:
           server_address: smtp.gmail.com
@@ -55,7 +55,7 @@ jobs:
           server_address: smtp.gmail.com
           server_port: 465
           username: joteegupta1.0@gmail.com
-          password: ${{ secrets.EMAIL_PASSWORD }}
+          password: brzafvpxlguvrrnj
           subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
           body: |
             Dear Team,
