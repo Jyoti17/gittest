@@ -11,8 +11,8 @@ def test_get_method():
     response.json()
     json_data=json.dumps((response.json()), indent=4)
     print(json_data)
-    print("Yugensys Manasa Pagal hai?")
-    print("Test")
+    print("Test Jyoti G code")
+    print("Test Yogesh Gondhali's code")
 
 
 test_get_method()
