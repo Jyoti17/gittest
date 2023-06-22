@@ -25,7 +25,7 @@ jobs:
 
       - name: Send mail
         if: ${{ always() }}
-        uses: dawidd6/action-send-mail@v2
+        uses: action-send-mail@v2
         with:
           server_address: smtp.gmail.com
           server_port: 465
@@ -34,5 +34,5 @@ jobs:
           subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
           body: |
             ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
-          to: example@example.com
+          to: yogeshg@yugensys.com
           from: jyoti Gupta
