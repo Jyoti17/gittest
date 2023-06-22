@@ -33,6 +33,17 @@ jobs:
           password: brzafvpxlguvrrnj
           subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
           body: |
-            ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+           Dear Team,
+
+            We regret to inform you that the ${{ github.job }} job in the workflow ${{ github.workflow }} of the repository ${{ github.repository }} has failed. Urgent action is required to address the issue and ensure the smooth execution of the workflow.
+
+          Job Status: ${{ job.status }}
+
+            You can access the details of the failed workflow run by clicking [here](${{ github.event.workflow_run.url }}).
+            Please review the error logs and investigate the cause of the failure. Once the necessary fixes are made, kindly rerun the workflow to ensure the successful completion of the job.
+            If you require any assistance or have any questions, please feel free to reach out.
+
+            Best regards,
+            Jyoti Gupta
           to: yogeshg@yugensys.com
           from: jyoti Gupta
