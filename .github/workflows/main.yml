@@ -1,19 +1,38 @@
 name: Python Test
-'on':
-  - push
-  
+
+on:
+  push
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.x
+
       - name: Checkout code
         uses: actions/checkout@v2
+
       - name: Install dependencies
         run: pip install -r requirements.txt
+
       - name: Run tests
         run: |
           pytest -m tcid011 -s
+
+      - name: Send mail
+        if: ${{ always() }}
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: joteegupta1.0@gmail.com
+          password: Jyoti@1710
+          subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
+          body: |
+            ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+          to: example@example.com
+          from: jyoti Gupta
