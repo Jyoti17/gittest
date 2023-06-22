@@ -39,7 +39,7 @@ jobs:
 
           Job Status: ${{ job.status }}
 
-            You can access the details of the failed workflow run by clicking [] ${{ github.event.workflow_run.url }}.
+            You can access the details of the failed workflow run by clicking ${{ github.event.workflow_run.url }}.
             Please review the error logs and investigate the cause of the failure. Once the necessary fixes are made, kindly rerun the workflow to ensure the successful completion of the job.
             If you require any assistance or have any questions, please feel free to reach out.
 
@@ -61,7 +61,7 @@ jobs:
             Dear Team,
             We are pleased to inform you that the ${{ github.job }} job in the workflow ${{ github.workflow }} of the repository ${{ github.repository }} has passed successfully.
             Job Status: ${{ job.status }}
-            You can review the details of the workflow run by clicking [] ${{ github.event.workflow_run.url }}.
+            You can review the details of the workflow run by clicking ${{ github.event.workflow_run.url }}.
             If you have any questions or need further assistance, please don't hesitate to reach out.
 
             Best regards,
