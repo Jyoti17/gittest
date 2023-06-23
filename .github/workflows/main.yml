@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Test Report
-          path: reports/report.html
+          path: reports/report.md
      
       - name: Send mail
         if: ${{ failure() }}
@@ -54,12 +54,12 @@ jobs:
             You can access the details of the failed workflow run by clicking ${{ github.event.workflow_run.url }}.
             Please review the error logs and investigate the cause of the failure. Once the necessary fixes are made, kindly rerun the workflow to ensure the successful completion of the job.
             If you require any assistance or have any questions, please feel free to reach out.
-            
-          Report Content:
-           ${{ steps.read_report.outputs.content }}
-            
-            Best regards,
-            Jyoti Gupta
+          
+            Report Content:
+             ${{ steps.read_report.outputs.content }}
+             
+           Best regards,
+           Jyoti Gupta  
           to: yogeshg@yugensys.com
           from: jyoti Gupta
           attachments: reports/report.md
@@ -81,7 +81,7 @@ jobs:
             If you have any questions or need further assistance, please don't hesitate to reach out.
             
             Report Content:
-            ${{ steps.read_report.outputs.content }}
+              ${{ steps.read_report.outputs.content }}
             
             Best regards,
             Jyoti Gupta
