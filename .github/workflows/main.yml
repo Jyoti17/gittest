@@ -17,22 +17,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
-     
-
+        run: |
+            pip install -r requirements.txt
+            pip install pytest-md-report
+   
       - name: Run tests
         run: |
-          pytest --junit-xml=test-results.xml
-      - name: Publish test results
-        if: ${{ always() }}
-        uses: pmeier/pytest-results-action@v0.3.0
-        with:
-         name: Pytest Results
-         path: results.xml
-         summary: true
-         display-options: fEX
-         fail-on-empty: false
-
+          pytest --md-report --md-report-verbose=1
 
       - name: Send mail
         if: ${{ failure() }}
