@@ -23,8 +23,9 @@ jobs:
             
       - name: Run tests
         run: |
-            pytest --html=reports/report.html --self-contained-html --md-report --md-report-verbose=1 --md-report-zeros number --md-report-color text 
-     
+          pytest --md-report --md-report-verbose=1 --md-report-zeros empty --md-report-color text
+          mv report.md reports/report.md     
+          
       - name: Publish report as artifact
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
