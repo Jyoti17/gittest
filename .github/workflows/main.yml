@@ -20,6 +20,7 @@ jobs:
         run: |
             pip install -r requirements.txt
             pip install pytest-md-report
+            pip install pytest-github-report
    
       - name: Run tests
         env:
@@ -31,7 +32,7 @@ jobs:
           pytest_xfailed_emoji: ":bangbang:"
           pytest_skipped_emoji: ":shipit:"
         run: |
-          pytest --md-report --md-report-verbose=1
+          pytest --github-report
 
       - name: Send mail
         if: ${{ failure() }}
