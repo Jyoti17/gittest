@@ -24,7 +24,14 @@ jobs:
       - name: Run tests
         run: |
             pytest --html=reports/report.html --self-contained-html --md-report --md-report-verbose=1 --md-report-zeros number --md-report-color text 
-      
+     
+      - name: Publish report as artifact
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: Test Report
+          path: reports/report.html
+     
       - name: Send mail
         if: ${{ failure() }}
         uses: dawidd6/action-send-mail@v2
