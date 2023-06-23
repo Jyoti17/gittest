@@ -1,19 +1,70 @@
 name: Python Test
-'on':
-  - push
-  
+
+on:
+  push
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.x
+
       - name: Checkout code
         uses: actions/checkout@v2
+
       - name: Install dependencies
         run: pip install -r requirements.txt
+
       - name: Run tests
         run: |
           pytest -m tcid011 -s
+
+      - name: Send mail
+        if: ${{ failure() }}
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: joteegupta1.0@gmail.com
+          password: brzafvpxlguvrrnj
+          subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
+          body: |
+           Dear Team,
+
+            We regret to inform you that the ${{ github.job }} job in the workflow ${{ github.workflow }} of the repository ${{ github.repository }} has failed. Urgent action is required to address the issue and ensure the smooth execution of the workflow.
+
+          Job Status: ${{ job.status }}
+
+            You can access the details of the failed workflow run by clicking ${{ github.event.workflow_run.url }}.
+            Please review the error logs and investigate the cause of the failure. Once the necessary fixes are made, kindly rerun the workflow to ensure the successful completion of the job.
+            If you require any assistance or have any questions, please feel free to reach out.
+
+            Best regards,
+            Jyoti Gupta
+          to: yogeshg@yugensys.com
+          from: jyoti Gupta
+        
+      - name: Send mail on success
+        if: ${{ success() }}
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: joteegupta1.0@gmail.com
+          password: brzafvpxlguvrrnj
+          subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
+          body: |
+            Dear Team,
+            We are pleased to inform you that the ${{ github.job }} job in the workflow ${{ github.workflow }} of the repository ${{ github.repository }} has passed successfully.
+            Job Status: ${{ job.status }}
+            You can review the details of the workflow run by clicking ${{ github.event.workflow_run.url }}.
+            If you have any questions or need further assistance, please don't hesitate to reach out.
+
+            Best regards,
+            Jyoti Gupta
+          to: yogeshg@yugensys.com
+          from: jyoti Gupta
