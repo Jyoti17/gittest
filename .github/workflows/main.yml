@@ -17,11 +17,8 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: |
-            pip install -r requirements.txt
-            pip install pytest-md-report
-            pip install pytest-github-report
-   
+        run:  pip install -r requirements.txt
+            
       - name: Run tests
         run: |
           pytest --github-report
