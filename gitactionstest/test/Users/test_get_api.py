@@ -24,3 +24,4 @@ def test_get_new_method():
     response = requests.get(base_url)
     json_data = json.dumps((response.json()), indent=4)
     assert response.status_code == 200, f"Status code showing wrong"
+    print("Success")
