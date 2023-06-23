@@ -23,8 +23,15 @@ jobs:
             
       - name: Run tests
         run: |
-            pytest --html=report.html --self-contained-html                   
-          
+            pytest --html=reports/report.html --self-contained-html --md-report --md-report-verbose=1 --md-report-zeros number --md-report-color text 
+     
+      - name: Publish report as artifact
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: Test Report
+          path: reports/report.html
+     
       - name: Send mail
         if: ${{ failure() }}
         uses: dawidd6/action-send-mail@v2
@@ -41,12 +48,13 @@ jobs:
             You can access the details of the failed workflow run by clicking ${{ github.event.workflow_run.url }}.
             Please review the error logs and investigate the cause of the failure. Once the necessary fixes are made, kindly rerun the workflow to ensure the successful completion of the job.
             If you require any assistance or have any questions, please feel free to reach out.
-
+            ${{ steps.read_report.outputs.content }}
             Best regards,
             Jyoti Gupta
           to: yogeshg@yugensys.com
           from: jyoti Gupta
-        
+          attachments: reports/report.html
+                
       - name: Send mail on success
         if: ${{ success() }}
         uses: dawidd6/action-send-mail@v2
@@ -62,8 +70,11 @@ jobs:
             Job Status: ${{ job.status }}
             You can review the details of the workflow run by clicking ${{ github.event.workflow_run.url }}.
             If you have any questions or need further assistance, please don't hesitate to reach out.
-
+            ${{ steps.read_report.outputs.content }}
+            
             Best regards,
             Jyoti Gupta
           to: yogeshg@yugensys.com
           from: jyoti Gupta
+          attachments: reports/report.html
+                  
