@@ -22,7 +22,7 @@ jobs:
       - name: Run tests
         run: |
           pytest --md-report --md-report-verbose=1 --md-report-zeros number --md-report-color text
-          pytest --html=reports/report.html --self-contained-html
+          pytest --html=report.html --self-contained-html
           
       - name: Send mail
         if: ${{ failure() }}
