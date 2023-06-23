@@ -24,7 +24,7 @@ jobs:
       - name: Run tests
         run: |
             pytest --html=reports/report.html --self-contained-html                   
-          
+            pytest --md-report --md-report-verbose=1 --md-report-zeros number --md-report-color text 
       - name: Send mail
         if: ${{ failure() }}
         uses: dawidd6/action-send-mail@v2
