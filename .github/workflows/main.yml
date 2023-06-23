@@ -21,7 +21,7 @@ jobs:
             
       - name: Run tests
         run: |
-          pytest --md-report --md-report-zeros empty --md-report-color text
+          pytest --md-report --md-report-verbose=1 --md-report-zeros number --md-report-color text
 
       - name: Send mail
         if: ${{ failure() }}
