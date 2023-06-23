@@ -25,10 +25,11 @@ jobs:
           pytest --junit-xml=test-results.xml
       - name: Publish test results
         if: ${{ always() }}
-        uses: pmeier/pytest-results-action@main
+        uses: pmeier/pytest-results-action@v3
         with:
-          name: Pytest Results
-          path: results.xml
+         name: Pytest Results
+         path: results.xml
+
 
       - name: Send mail
         if: ${{ failure() }}
