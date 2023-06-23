@@ -23,8 +23,7 @@ jobs:
             
       - name: Run tests
         run: |
-          pytest --md-report --md-report-verbose=1 --md-report-zeros empty --md-report-color text
-          mv report.md reports/report.md     
+          pytest --md-report --md-report-verbose=1 --md-report-zeros empty --md-report-color text mv report.md reports/report.md     
           
       - name: Publish report as artifact
         if: ${{ always() }}
