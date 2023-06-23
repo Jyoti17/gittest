@@ -21,7 +21,7 @@ jobs:
             
       - name: Run tests
         run: |
-          pytest --github-report
+          pytest --md-report --md-report-zeros empty --md-report-color text
 
       - name: Send mail
         if: ${{ failure() }}
