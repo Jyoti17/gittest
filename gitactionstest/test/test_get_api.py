@@ -14,6 +14,6 @@ def test_get_method():
     response.json()
     json_data=json.dumps((response.json()), indent=4)
     print(json_data)
-    assert response.status_code == 200, f"Status code showing wrong"
+    assert response.status_code == 201, f"Status code showing wrong"
 
 test_get_method()
