@@ -18,10 +18,18 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - name: Surface failing tests
+        if: always()
+        uses: pmeier/pytest-results-action@main
+        with:
+          path: test-results.xml
+          summary: true
+          display-options: fEX
+          fail-on-empty: true
 
       - name: Run tests
         run: |
-          pytest -m tcid011 -s
+          pytest --junit-xml=test-results.xml
 
       - name: Send mail
         if: ${{ failure() }}
