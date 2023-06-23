@@ -25,7 +25,7 @@ jobs:
           pytest --junit-xml=test-results.xml
       - name: Publish test results
         if: ${{ always() }}
-        uses: pmeier/pytest-results-action@v3
+        uses: pmeier/pytest-results-action@v0.3.0
         with:
          name: Pytest Results
          path: results.xml
