@@ -29,6 +29,8 @@ jobs:
         with:
          name: Pytest Results
          path: results.xml
+         summary: true
+         display-options: fEX
          fail-on-empty: false
 
 
