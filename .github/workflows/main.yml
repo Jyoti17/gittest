@@ -29,6 +29,7 @@ jobs:
         with:
          name: Pytest Results
          path: results.xml
+         fail-on-empty: true
 
 
       - name: Send mail
