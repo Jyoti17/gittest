@@ -22,6 +22,14 @@ jobs:
             pip install pytest-md-report
    
       - name: Run tests
+        env:
+          pytest_github_report: true
+          pytest_report_title: ":unicorn: Report With Custom Emojis :unicorn:"
+          pytest_passed_emoji: ":green_heart:"
+          pytest_failed_emoji: ":heart:"
+          pytest_xpassed_emoji: ":bangbang:"
+          pytest_xfailed_emoji: ":bangbang:"
+          pytest_skipped_emoji: ":shipit:"
         run: |
           pytest --md-report --md-report-verbose=1
 
