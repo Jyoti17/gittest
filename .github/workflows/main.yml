@@ -18,6 +18,8 @@ jobs:
 
       - name: Install dependencies
         run:  pip install -r requirements.txt
+      - name: Install pytest-html
+        run: pip install pytest-html
             
       - name: Run tests
         run: |
