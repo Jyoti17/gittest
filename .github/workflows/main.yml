@@ -53,7 +53,7 @@ jobs:
             Jyoti Gupta
           to: yogeshg@yugensys.com
           from: jyoti Gupta
-          attachments: Test Report.zip
+          attachments: reports/report.html
           
       - name: Send mail on success
         if: ${{ success() }}
@@ -75,4 +75,4 @@ jobs:
             Jyoti Gupta
           to: yogeshg@yugensys.com
           from: jyoti Gupta
-          attachments: Test Report.zip
+          attachments: reports/report.html
