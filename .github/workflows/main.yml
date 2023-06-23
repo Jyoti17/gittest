@@ -54,7 +54,7 @@ jobs:
           to: yogeshg@yugensys.com
           from: jyoti Gupta
           attachments: reports/report.html
-          
+                ${{ steps.read_report.outputs.content }}
       - name: Send mail on success
         if: ${{ success() }}
         uses: dawidd6/action-send-mail@v2
@@ -76,3 +76,4 @@ jobs:
           to: yogeshg@yugensys.com
           from: jyoti Gupta
           attachments: reports/report.html
+                ${{ steps.read_report.outputs.content }}  
